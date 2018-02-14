@@ -24,6 +24,7 @@ git clone https://github.com/ragepeanut/steammates.git
 2. **Getting and using your Steam dev API key**
 
 Get your API key [here](https://steamcommunity.com/dev/apikey), the domain name can be anything, it doesn't matter. This key **cannot** be shown to anyone. Replace *YOUR_API_KEY_HERE* on the seventh line of **app.js** by your API key.
+
 3. **Building the front-end**
 ```
 cd steammates\public
