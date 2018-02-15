@@ -23,11 +23,14 @@ git clone https://github.com/RagePeanut/SteamMates.git
 ```
 2. **Getting and using your Steam dev API key**
 
-Get your API key [here](https://steamcommunity.com/dev/apikey), the domain name can be anything, it doesn't matter. This key **cannot** be shown to anyone. Replace *YOUR_API_KEY_HERE* on the seventh line of **app.js** by your API key.
+Get your API key [here](https://steamcommunity.com/dev/apikey), the domain name can be anything, it doesn't matter. This key **cannot** be shown to anyone. Check the lines 6 and 7 of the **app.js** file to see what to do with it.
 
 3. **Building the front-end**
+
+This step should not be necessary with the current state of the project. However, if you encounter some problems with the front-end, try the following lines
 ```
 cd steammates\public
+npm install
 ng build -prod
 ```
 4. **Building the back-end**
@@ -37,7 +40,7 @@ npm install
 ```
 5. **Starting the app**
 
-By default, SteamMates is hosted on the port 5000.
+Check the lines 10 and 11 of the **app.js** file to see how to configure your port. Then just start the app !
 ```
 npm start
 ```
