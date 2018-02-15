@@ -1,0 +1,159 @@
+#inputs {
+  position: absolute;
+  transition: 1000ms ease-in-out top, 1000ms ease-in-out left, 1000ms ease-in-out width;
+}
+
+#inputs h1 {
+  position: absolute;
+  top: -50px;
+  width: 100%;
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 1000ms ease-in-out opacity;
+}
+
+#inputs #text-field {
+  position: relative;
+  border: none;
+  color: white;
+  text-align: center;
+  background-color: #465360;
+  box-shadow: 0px 0px 10px #131c27;
+  transition: 1000ms ease-in-out padding, 1000ms ease-in-out font-size, 1000ms ease-in-out width;
+}
+
+#inputs #text-field::placeholder {
+  color: #8F98A0;
+}
+
+#inputs #buttons {
+  position: absolute;
+  right: 0;
+  transition: 1000ms ease-in-out top, 1000ms ease-in-out width;
+  text-align: center;
+}
+
+#inputs #buttons button {
+  padding: 10px;
+  border: none;
+  font-size: 16px;
+  color: #66C0EA;
+  cursor: pointer;
+  background-color: #1D6F95;
+  box-shadow: 0px 0px 10px #131c27;
+  transition: 100ms ease-in-out color;
+}
+
+#inputs #buttons button:hover {
+  color: white;
+}
+
+#inputs #buttons button:disabled {
+  cursor: not-allowed;
+}
+
+#inputs #buttons button:disabled:hover {
+  color: #66C0EA;
+}
+
+#inputs #buttons #analyze {
+  display: inline-block;
+}
+
+#inputs #buttons #analyze #filters {
+  position: absolute;
+  z-index: 1;
+  padding: 5px 0;
+  font-family: arial;
+  color: white;
+  text-align: left;
+  list-style-type: none;
+  box-sizing: border-box;
+  background-color: #465360;
+  opacity: 0;
+  transition: 100ms ease-in-out opacity;
+}
+
+#inputs #buttons #analyze #filters li {
+  padding: 5px 10px;
+}
+
+#inputs #buttons #analyze:hover #filters {
+  opacity: 1;
+}
+
+#inputs.in {
+  top: 44vh;
+  left: 10%;
+  width: 80%;
+}
+
+#inputs.in h1 {
+  opacity: 1;
+}
+
+#inputs.in #text-field {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 22px;
+}
+
+#inputs.in #buttons {
+  top: 66px;
+  width: 100%;
+}
+
+#inputs.out {
+  top: 20px;
+  left: 10px;
+  width: calc(100% - 20px);
+}
+
+#inputs.out h1 {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#inputs.out #text-field {
+  width: calc(100% - 202px);
+  padding: 10px;
+  font-size: 16px;
+}
+
+#inputs.out #buttons {
+  top: 0;
+  width: 180px;
+}
+
+#players {
+  position: absolute;
+  width: 80%;
+  left: 10%;
+  text-align: center;
+  transition: 1000ms ease-in-out opacity, 1000ms ease-in-out top;
+}
+
+#players a {
+  margin: 0 10px;
+}
+
+#players a img {
+  height: 128px;
+  margin-bottom: 20px;
+  vertical-align: bottom;
+}
+
+#players.in {
+  opacity: 1;
+  top: 64vh;
+}
+
+#players.out {
+  opacity: 0;
+  top: 80px;
+  pointer-events: none;
+}
+/*# sourceMappingURL=app.component.css.map */

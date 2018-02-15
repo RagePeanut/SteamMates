@@ -1,0 +1,25 @@
+<div id="table">
+  <table>
+    <thead>
+      <th></th>
+      <th *ngFor="let player of players">
+        <a href="{{ player.profileurl }}" *ngIf="gamesReady">
+          <img src="{{ player.avatarfull }}">
+        </a>
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let game of getSortedGames()">
+        <td>
+          <a href="http://store.steampowered.com/app/{{ game.appid }}" target="_blank">
+            <img src="http://cdn.edgecast.steamstatic.com/steam/apps/{{ game.appid }}/header.jpg" alt="{{ game.name }}">
+          </a>
+        </td>
+        <td *ngFor="let hasTheGame of game.players">
+          <div class="green-tick" *ngIf="hasTheGame; else notHasTheGame">V</div>
+        </td>
+      </tr>
+    </tbody>
+</table>
+</div>
+<ng-template #notHasTheGame><div class="red-tick">X</div></ng-template>

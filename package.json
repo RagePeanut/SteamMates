@@ -1,0 +1,32 @@
+{
+  "name": "steammates",
+  "version": "1.0.0",
+  "description": "An easy way to find co-op and multiplayer games you and your friends have in common",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "steammates",
+    "steam",
+    "mates",
+    "friends",
+    "games",
+    "co-op",
+    "multiplayer",
+    "online",
+    "local"
+  ],
+  "author": "RagePeanut",
+  "license": "GPLv3",
+  "dependencies": {
+    "express": "^4.16.2",
+    "path": "^0.12.7",
+    "request": "^2.83.0"
+  },
+  "engines": {
+    "node": "8.6.0"
+  }
+}

@@ -1,0 +1,120 @@
+// VARIABLES
+$white: white
+$background: #1B2838
+$light-shadow: darken($background, 5)
+$dark-shadow: darken($background, 10)
+$input-background: #465360
+$placeholder: #8F98A0
+$button-text: #66C0EA
+$button: #1D6F95
+
+// STYLES
+#inputs
+    position: absolute
+    transition: 1000ms ease-in-out top, 1000ms ease-in-out left, 1000ms ease-in-out width
+    h1
+        position: absolute
+        top: -50px
+        width: 100%
+        font-family: 'Source Sans Pro'
+        font-weight: 400
+        color: $white
+        text-align: center
+        text-transform: uppercase
+        transition: 1000ms ease-in-out opacity
+    #text-field
+        position: relative
+        border: none
+        color: $white
+        text-align: center
+        background-color: $input-background
+        box-shadow: 0px 0px 10px $light-shadow
+        transition: 1000ms ease-in-out padding, 1000ms ease-in-out font-size, 1000ms ease-in-out width
+        &::placeholder
+            color: $placeholder
+    #buttons
+        position: absolute
+        right: 0
+        transition: 1000ms ease-in-out top, 1000ms ease-in-out width
+        text-align: center
+        button
+            padding: 10px
+            border: none
+            font-size: 16px
+            color: $button-text
+            cursor: pointer
+            background-color: $button
+            box-shadow: 0px 0px 10px $light-shadow
+            transition: 100ms ease-in-out color
+            &:hover
+                color: white
+            &:disabled
+                cursor: not-allowed
+                &:hover
+                    color: $button-text
+        #analyze
+            display: inline-block
+            #filters
+                position: absolute
+                z-index: 1
+                padding: 5px 0
+                font-family: arial
+                color: $white
+                text-align: left
+                list-style-type: none
+                box-sizing: border-box
+                background-color: $input-background
+                opacity: 0
+                transition: 100ms ease-in-out opacity
+                li
+                    padding: 5px 10px
+            &:hover
+                #filters
+                    opacity: 1
+    &.in
+        top: 44vh
+        left: 10%
+        width: 80%
+        h1
+            opacity: 1
+        #text-field
+            width: calc(100% - 20px)
+            padding: 10px
+            font-size: 22px
+        #buttons
+            top: 66px
+            width: 100%
+    &.out
+        top: 20px
+        left: 10px
+        width: calc(100% - 20px)
+        h1
+            opacity: 0
+            pointer-events: none
+        #text-field
+            width: calc(100% - 202px)
+            padding: 10px
+            font-size: 16px
+        #buttons
+            top: 0
+            width: 180px
+
+#players
+    position: absolute
+    width: 80%
+    left: 10%
+    text-align: center
+    transition: 1000ms ease-in-out opacity, 1000ms ease-in-out top
+    a
+        margin: 0 10px
+        img
+            height: 128px
+            margin-bottom: 20px
+            vertical-align: bottom
+    &.in
+        opacity: 1
+        top: 64vh
+    &.out
+        opacity: 0
+        top: 80px
+        pointer-events: none

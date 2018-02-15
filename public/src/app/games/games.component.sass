@@ -1,0 +1,49 @@
+// VARIABLES
+$white: white
+$background: #1B2838
+$light-shadow: darken($background, 5)
+$dark-shadow: darken($background, 10)
+$input-background: #465360
+$placeholder: #8F98A0
+$button-text: #66C0EA
+$button: #1D6F95
+$green-tick: #2ECC71
+$red-tick: #E74C3C
+
+// STYLES
+#table
+    display: flex
+    justify-content: center
+    position: absolute
+    top: 100px
+    width: 100%
+    table
+        margin-bottom: 50px
+        border-collapse: collapse
+        thead
+            th
+                box-shadow: 0px 0px 20px $dark-shadow
+                a img
+                    height: 112px
+                    width: 112px
+                    vertical-align: bottom
+                &:first-child
+                    box-shadow: none
+        tbody
+            tr
+                box-shadow: 0px 0px 20px $dark-shadow
+                td
+                    // Fix for browsers showing shadows over cells
+                    position: relative
+                    font-family: 'Source Sans Pro'
+                    font-size: 32px
+                    text-align: center
+                    background-color: $background
+                    a img
+                        height: 112px
+                        width: 240px
+                        vertical-align: bottom
+                .green-tick
+                    color: $green-tick
+                .red-tick
+                    color: $red-tick

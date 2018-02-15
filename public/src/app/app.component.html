@@ -1,0 +1,32 @@
+<div id="inputs" [ngClass]="state?'out':'in'">
+  <h1>{{ players.length }} player<span *ngIf="players.length !== 1">s</span></h1>
+  <input id="text-field" type="text" placeholder="Put your steamid or your custom url here..." [(ngModel)]="playerID">
+  <div id="buttons">
+    <button type="button" (click)="addPlayer()" [disabled]="state">Add</button>
+    <div id="analyze" #analyze>
+      <button type="submit" (click)="state=!state">{{ state?'Stop':'Start' }} analyzing</button>
+      <ul id="filters">
+        <li>
+          <input id="online" type="checkbox" (change)="filters.online=!filters.online" [checked]="filters.online">
+          <label for="online">Online</label>
+        </li>
+        <li>
+          <input id="lan" type="checkbox" (change)="filters.lan=!filters.lan" [checked]="filters.lan">
+          <label for="lan">LAN</label>
+        </li>
+        <li>
+          <input id="multiplayer" type="checkbox" (change)="filters.multiplayer=!filters.multiplayer" [checked]="filters.multiplayer">
+          <label for="multiplayer">Multiplayer</label>
+        </li>
+        <li>
+          <input id="co-op" type="checkbox" (change)="filters['co-op']=!filters['co-op']" [checked]="filters['co-op']">
+          <label for="co-op">Co-op</label>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="players" [ngClass]="state?'out':'in'">
+  <a *ngFor="let player of players" href="{{ player.profileurl }}" target="_blank"><img src="{{ player.avatarmedium }}" alt="Profile picture" class="state{{ player.personastate }}"></a>
+</div>
+<app-games *ngIf="state" [players]="players" [filters]="filters"></app-games>
