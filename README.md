@@ -19,7 +19,7 @@ Here are some previews of what the interface currently looks like.
 If you wish to deploy your own version of SteamMates on your local machine or online, follow these steps carefully.
 1. **Cloning**
 ```
-git clone https://github.com/ragepeanut/steammates.git
+git clone https://github.com/RagePeanut/SteamMates.git
 ```
 2. **Getting and using your Steam dev API key**
 
