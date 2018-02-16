@@ -1,14 +1,14 @@
 import { SteamUsersService } from './steam-users.service';
+import { SteamGamesService } from './games/steam-games.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { GamesComponent } from './games/games.component';
-import { SteamGamesService } from './games/steam-games.service';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { SteamGamesService } from './games/steam-games.service';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
   providers: [
     SteamUsersService,

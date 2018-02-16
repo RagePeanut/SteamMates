@@ -61,11 +61,13 @@
 
 #inputs #buttons #analyze {
   display: inline-block;
+  position: relative;
 }
 
 #inputs #buttons #analyze #filters {
   position: absolute;
   z-index: 1;
+  width: 100%;
   padding: 5px 0;
   font-family: arial;
   color: white;
@@ -73,6 +75,7 @@
   list-style-type: none;
   box-sizing: border-box;
   background-color: #465360;
+  pointer-events: none;
   opacity: 0;
   transition: 100ms ease-in-out opacity;
 }
@@ -136,14 +139,34 @@
   transition: 1000ms ease-in-out opacity, 1000ms ease-in-out top;
 }
 
-#players a {
-  margin: 0 10px;
+#players div {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 20px 10px;
 }
 
-#players a img {
+#players div fa {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 3px;
+  color: darkred;
+  cursor: pointer;
+  opacity: 0;
+  transition: 100ms ease-in-out color, 100ms ease-in-out opacity;
+}
+
+#players div fa:hover {
+  color: #720000;
+}
+
+#players div a img {
   height: 128px;
-  margin-bottom: 20px;
   vertical-align: bottom;
+}
+
+#players div:hover fa {
+  opacity: 1;
 }
 
 #players.in {

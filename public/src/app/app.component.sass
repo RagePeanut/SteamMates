@@ -7,6 +7,7 @@ $input-background: #465360
 $placeholder: #8F98A0
 $button-text: #66C0EA
 $button: #1D6F95
+$delete: darkred
 
 // STYLES
 #inputs
@@ -54,9 +55,11 @@ $button: #1D6F95
                     color: $button-text
         #analyze
             display: inline-block
+            position: relative
             #filters
                 position: absolute
                 z-index: 1
+                width: 100%
                 padding: 5px 0
                 font-family: arial
                 color: $white
@@ -64,6 +67,7 @@ $button: #1D6F95
                 list-style-type: none
                 box-sizing: border-box
                 background-color: $input-background
+                pointer-events: none
                 opacity: 0
                 transition: 100ms ease-in-out opacity
                 li
@@ -105,12 +109,28 @@ $button: #1D6F95
     left: 10%
     text-align: center
     transition: 1000ms ease-in-out opacity, 1000ms ease-in-out top
-    a
-        margin: 0 10px
-        img
-            height: 128px
-            margin-bottom: 20px
-            vertical-align: bottom
+    div
+        display: inline-block
+        position: relative
+        margin: 0 10px 20px 10px
+        fa
+            position: absolute
+            top: 0
+            right: 0
+            padding-right: 3px
+            color: $delete
+            cursor: pointer
+            opacity: 0
+            transition: 100ms ease-in-out color, 100ms ease-in-out opacity
+            &:hover
+                color: darken($delete, 5)
+        a
+            img
+                height: 128px
+                vertical-align: bottom
+        &:hover
+            fa
+                opacity: 1
     &.in
         opacity: 1
         top: 64vh
