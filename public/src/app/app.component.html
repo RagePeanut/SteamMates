@@ -3,8 +3,8 @@
   <input id="text-field" type="text" placeholder="Put your steamid or your custom url here..." [(ngModel)]="playerID">
   <div id="buttons">
     <button type="button" (click)="addPlayer()" [disabled]="state">Add</button>
-    <div id="analyze" #analyze>
-      <button type="submit" (click)="state=!state">{{ state?'Stop':'Start' }} analyzing</button>
+    <div id="analyze" (mouseleave)="changeFiltersPointerEvents('none')">
+      <button type="submit" (click)="state=!state" (mouseenter)="changeFiltersPointerEvents('all')">{{ state?'Stop':'Start' }} analyzing</button>
       <ul id="filters">
         <li>
           <input id="online" type="checkbox" (change)="filters.online=!filters.online" [checked]="filters.online">
@@ -27,6 +27,11 @@
   </div>
 </div>
 <div id="players" [ngClass]="state?'out':'in'">
-  <a *ngFor="let player of players" href="{{ player.profileurl }}" target="_blank"><img src="{{ player.avatarmedium }}" alt="Profile picture" class="state{{ player.personastate }}"></a>
+  <div *ngFor="let player of players; let i = index">
+    <!-- Always leave this hidden input as first ! -->
+    <input type="hidden" value="{{ i }}">
+    <fa name="times" size="2x" (click)="removePlayer($event)"></fa>
+    <a href="{{ player.profileurl }}" target="_blank"><img src="{{ player.avatarmedium }}" alt="Profile picture"></a>
+  </div>
 </div>
 <app-games *ngIf="state" [players]="players" [filters]="filters"></app-games>

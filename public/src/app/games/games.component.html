@@ -16,10 +16,10 @@
           </a>
         </td>
         <td *ngFor="let hasTheGame of game.players">
-          <div class="green-tick" *ngIf="hasTheGame; else notHasTheGame">V</div>
+          <div class="green-tick" *ngIf="hasTheGame; else notHasTheGame"><fa name="check"></fa></div>
         </td>
       </tr>
     </tbody>
-</table>
+  </table>
 </div>
-<ng-template #notHasTheGame><div class="red-tick">X</div></ng-template>
+<ng-template #notHasTheGame><div class="red-tick"><fa name="times"></fa></div></ng-template>

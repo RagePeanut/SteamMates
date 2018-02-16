@@ -2,16 +2,14 @@ import { User } from './user.model';
 
 import { SteamUsersService } from './steam-users.service';
 
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit, AfterViewInit {
-
-  @ViewChild('analyze') analyze: ElementRef;
+export class AppComponent implements OnInit {
 
   filters = {
     online: true,
@@ -28,10 +26,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-  }
-
-  ngAfterViewInit() {
-    document.getElementById('filters').style.width = this.analyze.nativeElement.offsetWidth + 'px';
   }
 
   addPlayer() {
@@ -67,10 +61,26 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   }
 
+  changeFiltersPointerEvents(newEvent: string) {
+    document.getElementById('filters').style.pointerEvents = newEvent;
+  }
+
   changeState() {
-
     this.state = !this.state;
+  }
 
+  removePlayer() {
+    // Getting the index from the hidden input
+    let index = event.target['parentNode'].parentNode.firstElementChild.attributes.value.nodeValue;
+    // Verifying that the index is possible
+    if (index >= 0 && index < this.playersIDs.length) {
+      // Removing the player from the players array
+      const steamid = this.players[index].steamid;
+      this.players.splice(index, 1);
+      // Removing the steamid from the playersIDs array
+      index = this.playersIDs.indexOf(steamid);
+      this.playersIDs.splice(index, 1);
+    }
   }
 
 }
