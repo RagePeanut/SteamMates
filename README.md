@@ -10,9 +10,9 @@ https://steammates.herokuapp.com/
 ## Preview
 Here are some previews of what the interface currently looks like.
 ### Home page
-![Home](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518642815/fdn4itufnbynyoybmzmp.png)
+![Home](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518812513/ocjkusowpsbvjwqqbsgp.png)
 ### Result page
-![Result](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518642888/nmgibvq6z7zfld09rkdw.png)
+![Result](https://res.cloudinary.com/hpiynhbhq/image/upload/v1518812585/mhrtvokcqzm24cwduyq4.png)
 
 ## Deploy
 **Required:** [Git](https://git-scm.com/), [NPM](https://www.npmjs.com/), [Node.js](https://nodejs.org/), [Angular](https://angular.io/), a [Steam](http://store.steampowered.com/) account
