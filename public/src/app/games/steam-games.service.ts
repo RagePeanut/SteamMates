@@ -28,14 +28,16 @@ export class SteamGamesService {
 
   }
 
-  async getGamesByTags(tags: string[]) {
+  async getGamesByTags(tags: Object) {
 
     const gamesLists = [];
     let i = 0;
 
-    for (const tag of tags) {
-      gamesLists[i] = await this.getGamesByTag(tags[i]);
-      i++;
+    for (const tag in tags) {
+      if (tags.hasOwnProperty(tag) && tags[tag]) {
+        gamesLists[i] = await this.getGamesByTag(tag);
+        i++;
+      }
     }
 
     return gamesLists;

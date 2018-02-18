@@ -56,6 +56,9 @@ $delete: darkred
         #analyze
             display: inline-block
             position: relative
+            ul
+                list-style-type: none
+                font-weight: normal
             #filters
                 position: absolute
                 z-index: 1
@@ -64,14 +67,16 @@ $delete: darkred
                 font-family: arial
                 color: $white
                 text-align: left
-                list-style-type: none
                 box-sizing: border-box
                 background-color: $input-background
                 pointer-events: none
                 opacity: 0
                 transition: 100ms ease-in-out opacity
-                li
-                    padding: 5px 10px
+                &>li
+                    padding: 5px 10px 0 10px
+                    font-weight: bold
+                    ul
+                        padding: 5px 0 5px 25px
             &:hover
                 #filters
                     opacity: 1

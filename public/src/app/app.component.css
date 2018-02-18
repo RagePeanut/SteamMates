@@ -64,6 +64,11 @@
   position: relative;
 }
 
+#inputs #buttons #analyze ul {
+  list-style-type: none;
+  font-weight: normal;
+}
+
 #inputs #buttons #analyze #filters {
   position: absolute;
   z-index: 1;
@@ -72,7 +77,6 @@
   font-family: arial;
   color: white;
   text-align: left;
-  list-style-type: none;
   box-sizing: border-box;
   background-color: #465360;
   pointer-events: none;
@@ -80,8 +84,13 @@
   transition: 100ms ease-in-out opacity;
 }
 
-#inputs #buttons #analyze #filters li {
-  padding: 5px 10px;
+#inputs #buttons #analyze #filters > li {
+  padding: 5px 10px 0 10px;
+  font-weight: bold;
+}
+
+#inputs #buttons #analyze #filters > li ul {
+  padding: 5px 0 5px 25px;
 }
 
 #inputs #buttons #analyze:hover #filters {

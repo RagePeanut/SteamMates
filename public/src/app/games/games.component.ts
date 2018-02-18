@@ -13,48 +13,20 @@ export class GamesComponent implements OnInit {
   shownGames = {};
   games = [];
   @Input() players = [];
-  @Input() filters: {
-    online: boolean,
-    lan: boolean,
-    multiplayer: boolean,
-    'co-op': boolean
+  @Input() tags: {
+    'Online Co-op': boolean,
+    'Online Multiplayer': boolean,
+    'Local Co-op': boolean,
+    'Local Multiplayer': boolean
   };
 
   constructor(private gamesService: SteamGamesService) {}
 
   ngOnInit() {
 
-    const tags = [];
-    // If online and lan are unchecked, the final result should be the same as both checked
-    if (this.filters.online === false && this.filters.lan === false) {
-      this.filters.online = true;
-      this.filters.lan = true;
-    }
-    // If multiplayer and co-op are unchecked, the final result should be the same as both checked
-    if (this.filters.multiplayer === false && this.filters['co-op'] === false) {
-      this.filters.multiplayer = true;
-      this.filters['co-op'] = true;
-    }
-    // Pushing the corresponding tags to the tags array
-    if (this.filters.online) {
-      if (this.filters.multiplayer) {
-        tags.push('Multiplayer');
-      }
-      if (this.filters['co-op']) {
-        tags.push('Co-op');
-      }
-    }
-    if (this.filters.lan) {
-      if (this.filters.multiplayer) {
-        tags.push('Local Multiplayer');
-      }
-      if (this.filters['co-op']) {
-        tags.push('Local Co-op');
-      }
-    }
     // Starting by querying for X lists of games by tags
     this.gamesService
-      .getGamesByTags(tags)
+      .getGamesByTags(this.tags)
       .then(
         (gamesLists: Object[]) => {
           // Get the games owned by each player
