@@ -4,23 +4,58 @@
   <div id="buttons">
     <button type="button" (click)="addPlayer()" [disabled]="state">Add</button>
     <div id="analyze" (mouseleave)="changeFiltersPointerEvents('none')">
-      <button type="submit" (click)="state=!state" (mouseenter)="changeFiltersPointerEvents('all')">{{ state?'Stop':'Start' }} analyzing</button>
+      <button type="submit" (click)="changeState()" (mouseenter)="changeFiltersPointerEvents('all')">{{ state?'Stop':'Start' }} analyzing</button>
+      <div id="filters-arrow">
+        <div></div>
+      </div>
       <ul id="filters">
         <li>
-          <input id="online" type="checkbox" (change)="filters.online=!filters.online" [checked]="filters.online">
+          <input id="online" type="checkbox"
+                 (change)="setTags()"
+                 [checked]="tags['Online Co-op'] && tags['Online Multiplayer']">
           <label for="online">Online</label>
+          <ul>
+            <li>
+              <label>
+                <input type="checkbox"
+                       (change)="tags['Online Co-op'] = !tags['Online Co-op']; setParentCheckboxState()"
+                       [checked]="tags['Online Co-op']">
+                Co-op
+              </label>
+            </li>
+            <li>
+              <label>
+                <input id="online-multiplayer" type="checkbox"
+                       (change)="tags['Online Multiplayer'] = !tags['Online Multiplayer']; setParentCheckboxState()"
+                       [checked]="tags['Online Multiplayer']">
+                Multiplayer
+              </label>
+            </li>
+          </ul>
         </li>
         <li>
-          <input id="lan" type="checkbox" (change)="filters.lan=!filters.lan" [checked]="filters.lan">
-          <label for="lan">LAN</label>
-        </li>
-        <li>
-          <input id="multiplayer" type="checkbox" (change)="filters.multiplayer=!filters.multiplayer" [checked]="filters.multiplayer">
-          <label for="multiplayer">Multiplayer</label>
-        </li>
-        <li>
-          <input id="co-op" type="checkbox" (change)="filters['co-op']=!filters['co-op']" [checked]="filters['co-op']">
-          <label for="co-op">Co-op</label>
+          <input id="local" type="checkbox"
+                 (change)="setTags()"
+                 [checked]="tags['Local Co-op'] && tags['Local Multiplayer']">
+          <label for="local">Local</label>
+          <ul>
+              <li>
+                <label>
+                  <input id="local-coop" type="checkbox"
+                         (change)="tags['Local Co-op'] = !tags['Local Co-op']; setParentCheckboxState()"
+                         [checked]="tags['Local Co-op']">
+                  Co-op
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input id="local-multiplayer" type="checkbox"
+                         (change)="tags['Local Multiplayer'] = !tags['Local Multiplayer']; setParentCheckboxState()"
+                         [checked]="tags['Local Multiplayer']">
+                  Multiplayer
+                </label>
+              </li>
+            </ul>
         </li>
       </ul>
     </div>
@@ -34,4 +69,4 @@
     <a href="{{ player.profileurl }}" target="_blank"><img src="{{ player.avatarmedium }}" alt="Profile picture"></a>
   </div>
 </div>
-<app-games *ngIf="state" [players]="players" [filters]="filters"></app-games>
+<app-games *ngIf="state" [players]="players" [tags]="tags"></app-games>

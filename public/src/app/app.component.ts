@@ -11,11 +11,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  filters = {
-    online: true,
-    lan: true,
-    multiplayer: true,
-    'co-op': true
+  tags = {
+    'Online Co-op': true,
+    'Online Multiplayer': true,
+    'Local Co-op': true,
+    'Local Multiplayer': true
   };
   state: boolean;
   playerID: string;
@@ -63,10 +63,29 @@ export class AppComponent implements OnInit {
 
   changeFiltersPointerEvents(newEvent: string) {
     document.getElementById('filters').style.pointerEvents = newEvent;
+    document.getElementById('filters-arrow').style.pointerEvents = newEvent;
   }
 
   changeState() {
     this.state = !this.state;
+  }
+
+  setTags() {
+    function setTagsState(state: boolean, tags: any) {
+      tags[firstPart + ' Co-op'] = state;
+      tags[firstPart + ' Multiplayer'] = state;
+      return tags;
+    }
+    const firstPart = event.target['id'][0].toUpperCase() + event.target['id'].slice(1);
+    // tslint:disable-next-line:max-line-length
+    this.tags = setTagsState(!this.tags[firstPart + ' Co-op'] || !this.tags[firstPart + ' Multiplayer'], this.tags);
+  }
+
+  setParentCheckboxState() {
+    const parentCheckbox = event.target['parentNode'].parentNode.parentNode.parentNode.children[0];
+    const firstPart = parentCheckbox.id[0].toUpperCase() + parentCheckbox.id.slice(1);
+    // tslint:disable-next-line:no-bitwise
+    parentCheckbox.indeterminate = this.tags[firstPart + ' Co-op'] ^ this.tags[firstPart + ' Multiplayer'];
   }
 
   removePlayer() {
