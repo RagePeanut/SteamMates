@@ -5,6 +5,9 @@
     <button type="button" (click)="addPlayer()" [disabled]="state">Add</button>
     <div id="analyze" (mouseleave)="changeFiltersPointerEvents('none')">
       <button type="submit" (click)="changeState()" (mouseenter)="changeFiltersPointerEvents('all')">{{ state?'Stop':'Start' }} analyzing</button>
+      <div id="filters-arrow">
+        <div></div>
+      </div>
       <ul id="filters">
         <li>
           <input id="online" type="checkbox"

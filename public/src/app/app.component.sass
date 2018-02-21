@@ -44,6 +44,7 @@ $delete: darkred
             font-size: 16px
             color: $button-text
             cursor: pointer
+            vertical-align: top
             background-color: $button
             box-shadow: 0px 0px 10px $light-shadow
             transition: 100ms ease-in-out color
@@ -59,11 +60,29 @@ $delete: darkred
             ul
                 list-style-type: none
                 font-weight: normal
-            #filters
+            #filters-arrow
                 position: absolute
                 z-index: 1
                 width: 100%
+                pointer-events: none
+                opacity: 0
+                transition: 100ms ease-in-out opacity
+                div
+                    height: 0
+                    width: 0
+                    margin: 0 auto
+                    border-style: solid
+                    border-width: 0 7px 7px 7px
+                    border-color: transparent transparent $input-background transparent
+            #filters
+                position: absolute
+                top: calc(100% + 7px)
+                // Next two lines center the element relative to the parent
+                left: 50%
+                transform: translate(-50%, 0)
+                z-index: 1
                 padding: 5px 0
+                border-radius: 4px
                 font-family: arial
                 color: $white
                 text-align: left
@@ -75,10 +94,11 @@ $delete: darkred
                 &>li
                     padding: 5px 10px 0 10px
                     font-weight: bold
+                    white-space: nowrap
                     ul
-                        padding: 5px 0 5px 25px
+                        padding: 5px 0 5px 18px
             &:hover
-                #filters
+                #filters, #filters-arrow
                     opacity: 1
     &.in
         top: 44vh

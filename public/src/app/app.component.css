@@ -42,6 +42,7 @@
   font-size: 16px;
   color: #66C0EA;
   cursor: pointer;
+  vertical-align: top;
   background-color: #1D6F95;
   box-shadow: 0px 0px 10px #131c27;
   transition: 100ms ease-in-out color;
@@ -69,11 +70,32 @@
   font-weight: normal;
 }
 
-#inputs #buttons #analyze #filters {
+#inputs #buttons #analyze #filters-arrow {
   position: absolute;
   z-index: 1;
   width: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: 100ms ease-in-out opacity;
+}
+
+#inputs #buttons #analyze #filters-arrow div {
+  height: 0;
+  width: 0;
+  margin: 0 auto;
+  border-style: solid;
+  border-width: 0 7px 7px 7px;
+  border-color: transparent transparent #465360 transparent;
+}
+
+#inputs #buttons #analyze #filters {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
   padding: 5px 0;
+  border-radius: 4px;
   font-family: arial;
   color: white;
   text-align: left;
@@ -87,13 +109,14 @@
 #inputs #buttons #analyze #filters > li {
   padding: 5px 10px 0 10px;
   font-weight: bold;
+  white-space: nowrap;
 }
 
 #inputs #buttons #analyze #filters > li ul {
-  padding: 5px 0 5px 25px;
+  padding: 5px 0 5px 18px;
 }
 
-#inputs #buttons #analyze:hover #filters {
+#inputs #buttons #analyze:hover #filters, #inputs #buttons #analyze:hover #filters-arrow {
   opacity: 1;
 }
 

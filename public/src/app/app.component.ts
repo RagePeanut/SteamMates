@@ -63,6 +63,7 @@ export class AppComponent implements OnInit {
 
   changeFiltersPointerEvents(newEvent: string) {
     document.getElementById('filters').style.pointerEvents = newEvent;
+    document.getElementById('filters-arrow').style.pointerEvents = newEvent;
   }
 
   changeState() {
