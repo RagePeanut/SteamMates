@@ -20,7 +20,7 @@
     "local"
   ],
   "author": "RagePeanut",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "dependencies": {
     "express": "^4.16.2",
     "path": "^0.12.7",
