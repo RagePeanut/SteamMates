@@ -1,7 +1,7 @@
 # SteamMates
 SteamMates is an Open-Source project that makes it easier than ever to find multiplayer and co-op games you and your friends have in common.
 
-SteamMates lets you decide what kind of games you want to play thanks to these four filters: **Online**, **LAN**, **Multiplayer** and **Co-op**.
+SteamMates lets you decide what kind of games you want to play thanks to these four filters: **Online Co-op**, **Online Multiplayer**, **Local Co-op** and **Local Multiplayer**.
 
 ## Demo
 You can find a live demo of this project at the following address:
