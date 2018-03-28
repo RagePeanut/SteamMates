@@ -8,15 +8,12 @@ var fs = require('fs');
 // If you plan to deploy it online, do what you must to secure your key
 var DEVKEY = process.env.STEAM_API_KEY;
 
-var tags = [
-    'Online Co-op',
-    'Multiplayer',
-    'Local Co-op',
-    'Local Multiplayer'
-];
+var tags = [];
 
-var genres = [
-];
+var failedTags = [];
+
+var genres = [];
+
 
 // You can replace process.env.PORT by another port, for example 5000 if you run it locally
 // See with your web host which port to use if you want to run it online
@@ -133,12 +130,9 @@ app.get('/api/get_games_by_tag', function(req, res) {
 
 });
 
-app.get('/api/get_games_by_genre', function(req, res) {
-
-    var genre = req.query.genre;
-
-    if(!genre);
-
+app.get('/api/get_tags', function(req, res) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(tags);
 });
 
 // If no API request, handles the redirection to Angular
@@ -153,15 +147,25 @@ var server = app.listen(app.get('port'), function () {
 
 });
 
-// Calling updateTagFile which will call itself until all the necessary tags are updated
-// Once it's done, it calls updateGenreFile which will do the same
-// Once updateGenreFile is done, it will set a timeout of 12 hours on updateTagFile
-updateTagFile(0);
+setTags();
+
+async function setTags() {
+    request.get('http://store.steampowered.com/tagdata/populartags/english', function(error, response, body) {
+        if(error || !body) setTimeout(setTags, 5 * 1000);
+        else {
+            tags = JSON.parse(body).map(tag => tag.name).sort((a, b) => a.localeCompare(b));
+            // Calling updateTagFile which will call itself until all the popular tags are updated
+            // Once it's done, it calls updateGenreFile which will do the same
+            // Once updateGenreFile is done, it will set a timeout of 12 hours on updateTagFile
+            updateTagFile(0);
+        }
+    });
+}
 
 async function updateTagFile(i) {
     if(i < tags.length) {
         requestGamesBy('tag', tags[i], './data/tags/' + tags[i] + '.json');
-        setTimeout(updateTagFile, 15 * 1000, ++i);
+        setTimeout(updateTagFile, 500, ++i);
     } else {
         // If i >= tags.length, then it means that all tags have been or are being updated
         // Call updateGenreFile to do the same with genres files
@@ -172,7 +176,7 @@ async function updateTagFile(i) {
 async function updateGenreFile(i) {
     if(i < genres.length) {
         requestGamesBy('genre', genres[i], './data/genres/' + genres[i] + '.json');
-        setTimeout(updateGenreFile, 15 * 1000, ++i);
+        setTimeout(updateGenreFile, 500, ++i);
     } else {
         // Calling updateTagsFile after 12 hours to start the whole updating process again
         setTimeout(updateTagFile, 12 * 60 * 60 * 1000, 0)
@@ -185,9 +189,16 @@ async function requestGamesBy(req, needed, filePath, res) {
         if(res) {
             res.setHeader('Content-Type', 'application/json');
             res.send(body);
-        } 
-        fs.writeFile(filePath, body, function(err) {
-            if(err) console.log(err);
-        });
+        }
+        try {
+            // Testing if it's a JSON and not undefined or XML
+            JSON.parse(body);
+            fs.writeFile(filePath, body, function(err) {
+                if(err) console.log(err);
+            });
+        } catch(error) {
+            console.log('Error caught with ', needed);
+            setTimeout(requestGamesBy, 1000, req, needed, filePath, res);
+        }
     })
 }
