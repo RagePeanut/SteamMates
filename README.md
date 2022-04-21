@@ -1,3 +1,5 @@
+# This project is abandoned due to Steam's GDPR compliant changes to their API
+
 # SteamMates
 SteamMates is an Open-Source project that makes it easier than ever to find multiplayer and co-op games you and your friends have in common.
 
